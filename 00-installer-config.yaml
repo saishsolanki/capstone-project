@@ -1,0 +1,35 @@
+network:
+  version: 2
+  renderer: networkd
+  ethernets:
+    enp0s17:
+      addresses: []
+      dhcp4: true
+    enp0s8:
+      addresses:
+        - 192.168.197.99/24
+  vlans:
+    en-vl10:
+      id: 10
+      link: enp0s8
+      addresses:
+        - 172.16.3.2/24
+      routes:
+        - to: 172.16.6.0/24
+          via: 172.16.3.1
+      nameservers:
+        addresses: [172.16.3.2]
+        search: [simpson22725.mytld]
+    en-vl20:
+      id: 20
+      link: enp0s8
+      addresses:
+        - 172.16.4.2/24
+      routes:
+        - to: 172.16.7.0/24
+          via: 172.16.4.1
+    en-vl30:
+      id: 30
+      link: enp0s8
+      addresses:
+        - 172.16.5.2/24
